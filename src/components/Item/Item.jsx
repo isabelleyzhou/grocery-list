@@ -17,7 +17,7 @@ class Item extends Component {
         <span class="checkmark"></span>
      </label> 
     </div>
-    
+  
     );
   }
 }

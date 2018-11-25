@@ -33,9 +33,43 @@ router.get('/items/:tripID', async (req, res) => {
 /**
  * Adds an item to the grocery list of items for a given trip
  */
-router.post('/items/:tripID', (req, res) => {
-    const { tripID } = req.params;
-    const { itemName } = req.body;
+router.post('/items/:tripID', async (req, res) => {
+    try {
+        const { tripID } = req.params;
+        const { itemName } = req.body;
+        const query = await db.query(
+            'INSERT INTO items (trip_id, item_name) VALUES ($1, $2) RETURNING id;',
+            [tripID, itemName]
+        );
+        const itemID = query.rows[0].id;
+        res.send({
+            id: itemID,
+            trip: tripID,
+            name: itemName,
+        });
+    } catch (error) {
+        console.log(error.stack);
+    }
+});
+
+/**
+ * Creates a new trip
+ */
+router.post('/addtrip', async (req, res) => {
+    try {
+        const { tripName } = req.body;
+        const query = await db.query(
+            'INSERT INTO trips (trip_name) VALUES ($1) RETURNING id;',
+            [tripName]
+        );
+        const tripID = query.rows[0].id;
+        res.send({
+            id: tripID,
+            name: tripName,
+        });
+    } catch (error) {
+        console.log(error.stack);
+    }
 });
 
 /** Don't forget to export */

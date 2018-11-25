@@ -7,7 +7,21 @@ const router = new Router();
 /**
  * For testing - feel free to remove
  */
-router.get('/', (req, res) => res.send('Hello World!'));
+router.get('/', (req, res) => res.send('API is functioning!'));
+
+/**
+ * Returns a list of trips stored in the database
+ */
+router.get('/trips', async (req, res) => {
+    try {
+        const query = await db.query(
+            'SELECT * FROM trips ORDER BY id;'
+        );
+        res.send(query.rows);
+    } catch (error) {
+        console.log(error.stack);
+    }
+});
 
 /**
  * Returns the grocery list of items for a given trip

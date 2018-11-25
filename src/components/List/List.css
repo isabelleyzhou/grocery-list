@@ -1,3 +1,10 @@
+.logo {
+  position: absolute;
+  top: 10px;
+  left: 7px;
+  z-index: 1;
+}
+
 .date {
     font-family: 'Ubuntu', sans-serif;
     color: #3EB9CA;

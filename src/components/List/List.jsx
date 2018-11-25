@@ -41,18 +41,20 @@ class App extends Component {
              <img src={home} className="logo" alt="Home Logo" height="42" width="42"></img>
             </NavLink>
             <h1 className="date">October 16, 2018</h1>
-            <input
-                  onKeyPress={this.addItem}
-                  className="inputText"
-                  placeholder="Add item"
-                  onChange={this.handleItem}
-                  value= {curr_item}
-                />
-            <ul className="display">
-                    {items.map(item => (
-                    <Item text={item} />
-                    ))}
+            <div className="boxes">
+                <input
+                    onKeyPress={this.addItem}
+                    className="inputText"
+                    placeholder="Add item"
+                    onChange={this.handleItem}
+                    value= {curr_item}
+                    />
+                <ul className="display">
+                        {items.map(item => (
+                        <Item text={item} />
+                        ))}
                 </ul>
+            </div>
         </div>
         );
     }

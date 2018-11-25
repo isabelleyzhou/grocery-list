@@ -5,6 +5,10 @@
   z-index: 1;
 }
 
+.boxes{
+  width: 1400px;
+}
+
 .date {
     font-family: 'Ubuntu', sans-serif;
     color: #3EB9CA;
@@ -27,7 +31,7 @@
     margin-top: 20px;
     padding: 10px;
     padding-top: 22px;
-    margin: 0;
+    margin: 0px;
   }
   
   .inputText::placeholder {

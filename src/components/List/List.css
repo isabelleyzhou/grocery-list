@@ -1,0 +1,39 @@
+.date {
+    font-family: 'Ubuntu', sans-serif;
+    color: #3EB9CA;
+    position: absolute;
+    top: 50px;
+    left: 80px;
+
+}
+.inputText {
+    position: absolute;
+    top: 150px;
+    left: 80px;
+    background-color: #f4f4f4;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    border: solid;
+    width: 85.7%;
+    height: 20px;
+    border-color: #ebe9e9;
+    font-family: 'Ubuntu', sans-serif;
+    margin-top: 20px;
+    padding: 10px;
+    padding-top: 22px;
+    margin: 0;
+  }
+  
+  .inputText::placeholder {
+    font-size: 20px;
+  }
+  
+  .inputText:focus {
+    outline: none;
+  }
+
+  .display {
+    margin-top: 250px;
+    position: relative;
+    left: 40px;
+  }

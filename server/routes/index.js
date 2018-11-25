@@ -11,16 +11,20 @@ router.get('/', (req, res) => res.send('Hello World!'));
 
 /**
  * Returns the grocery list of items for a given trip
+ * e.g. GET localhost:8080/api/items/1 -> ["Pizza", "Oreos", "Cinnamon Toast Crunch"]
  */
 router.get('/items/:tripID', async (req, res) => {
     try {
         const { tripID } = req.params;
+        const items = [];
         const query = await db.query(
             'SELECT item_name FROM items WHERE trip_id=$1 ORDER BY id;',
             [tripID]
         );
-        res.send(query.rows);
-        // res.send(`/api/items/${tripID}`);
+        query.rows.forEach(e => {
+            items.push(e.item_name);
+        });
+        res.send(items);
     } catch (error) {
         console.log(error.stack);
     }
@@ -34,5 +38,5 @@ router.post('/items/:tripID', (req, res) => {
     const { itemName } = req.body;
 });
 
-
+/** Don't forget to export */
 module.exports = router;

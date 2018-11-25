@@ -15,16 +15,15 @@
 }
 .inputText {
     position: absolute;
+    background-color: #f4f4f4;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 20px;
     top: 150px;
     left: 80px;
-    background-color: #f4f4f4;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 20px;
     border: solid;
-    width: 85.7%;
+    width: 90%;
     height: 20px;
     border-color: #ebe9e9;
-    font-family: 'Ubuntu', sans-serif;
     margin-top: 20px;
     padding: 10px;
     padding-top: 22px;

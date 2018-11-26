@@ -10,12 +10,12 @@ class Item extends Component {
   render() {
     const { text } = this.props;
     return (
-    <div>
-      <li>{text}</li>
-     <label class="container">Completed
+    <div className= "list">
+      <label class="container">
         <input type="checkbox"/>
         <span class="checkmark"></span>
      </label> 
+      <li className="item-name" >{text}</li>
     </div>
   
     );

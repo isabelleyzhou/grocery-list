@@ -5,37 +5,61 @@ import "./Dashboard.css";
 import { NavLink } from "react-router-dom";
 import home from "../images/home.png";
 
-const dateList = [
-  "November 12",
-  "November 13",
-  "November 14",
-  "November 15",
-  "November 16",
-  "November 17"
-];
-
-function displayDates(dateList) {
-  const boxArray = [];
-  for (let i = 0; i < dateList.length; i += 1) {
-    boxArray.push(<Date title={dateList[i]} />);
-  }
-  return boxArray;
+/** Hashmap for matching month numbers to month names */
+const monthList = {
+  1: 'January',
+  2: 'February',
+  3: 'March',
+  4: 'April',
+  5: 'May',
+  6: 'June',
+  7: 'July',
+  8: 'August',
+  9: 'September',
+  10: 'December',
+  11: 'November',
+  12: 'December',
 }
 
 class Dashboard extends Component {
+  
   constructor() {
     super();
     this.state = {
-      dateList: dateList
+      dateList: [],
+      finished: false,
     };
+    this.displayDates = this.displayDates.bind(this);
   }
 
+  /** Fetch the trips from the API and set state */
   componentDidMount() {
     fetch('/api/trips')
       .then(response => response.json())
       .then(jsonResponse => {
-        console.log(jsonResponse);
+        this.setState({
+          dateList: jsonResponse,
+          finished: true,
+        })
       });
+  }
+
+  /**
+   * Helper function for displaying date boxes
+   * Currently, only displays the date of the trip
+   * TODO: Also make it display the name of the trip (?)
+   */
+  displayDates() {
+    const { dateList, finished } = this.state;
+    if (finished) {
+      const boxArray = [];
+      for (let i = 0; i < dateList.length; i += 1) {
+        const month = parseInt(dateList[i].month, 10)
+        const date = monthList[month] + ' ' + dateList[i].day
+        boxArray.push(<Date title={date} id={dateList[i].id} name = {dateList[i].name} />);
+      }
+      return boxArray;
+    }
   }
 
   render() {
@@ -53,7 +77,7 @@ class Dashboard extends Component {
         </NavLink>
         <div className="boxes-container">
           <AddDate />
-          {displayDates(dateList)}
+          {this.displayDates(dateList)}
         </div>
       </div>
     );

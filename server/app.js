@@ -1,6 +1,7 @@
 const express = require('express');
-const db = require('./db/index');
 const indexRouter = require('./routes/index');
+
+var cors = require('cors')
 
 const app = express();
 const port = normalizePort(process.env.PORT || '8080');
@@ -25,6 +26,7 @@ function normalizePort(val) {
     return false;
   }
 
+app.use(cors())
 app.use('/api', indexRouter);
 app.listen(port, () => console.log(`Server listening on port ${port}.`))
 

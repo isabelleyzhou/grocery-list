@@ -14,6 +14,7 @@ router.get('/', (req, res) => res.send('API is functioning!'));
  */
 router.get('/trips', async (req, res) => {
     try {
+        // In the query, create month and day keys that are extracted from the date object
         const query = await db.query(
             `SELECT
                 id,
@@ -73,6 +74,7 @@ router.post('/items/:tripID', async (req, res) => {
 
 /**
  * Creates a new trip
+ * Haven't tested yet - requires form data
  */
 router.post('/addtrip', async (req, res) => {
     try {

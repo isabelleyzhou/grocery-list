@@ -5,7 +5,14 @@ import "./Dashboard.css";
 import { NavLink } from "react-router-dom";
 import home from "../images/home.png";
 
-const dateList = ["November 12", "November 13", "November 14"];
+const dateList = [
+  "November 12",
+  "November 13",
+  "November 14",
+  "November 15",
+  "November 16",
+  "November 17"
+];
 
 function displayDates(dateList) {
   const boxArray = [];

@@ -15,7 +15,12 @@ router.get('/', (req, res) => res.send('API is functioning!'));
 router.get('/trips', async (req, res) => {
     try {
         const query = await db.query(
-            'SELECT * FROM trips ORDER BY id;'
+            `SELECT
+                id,
+                trip_name,
+                EXTRACT(DAY from trip_date) AS day,
+                EXTRACT(MONTH from trip_date)
+            AS month FROM trips ORDER BY id;`
         );
         res.send(query.rows);
     } catch (error) {

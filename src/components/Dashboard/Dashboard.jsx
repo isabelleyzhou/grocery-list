@@ -29,6 +29,15 @@ class Dashboard extends Component {
       dateList: dateList
     };
   }
+
+  componentDidMount() {
+    fetch('/api/trips')
+      .then(response => response.json())
+      .then(jsonResponse => {
+        console.log(jsonResponse);
+      });
+  }
+
   render() {
     const { dateList } = this.state;
     return (

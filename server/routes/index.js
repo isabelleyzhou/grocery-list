@@ -30,7 +30,7 @@ router.get('/trips', async (req, res) => {
 
 /**
  * Returns the grocery list of items for a given trip
- * e.g. GET localhost:8080/api/items/1 -> ["Pizza", "Oreos", "Cinnamon Toast Crunch"]
+ * e.g. GET /api/items/1 -> ["Pizza", "Oreos", "Cinnamon Toast Crunch"]
  */
 router.get('/items/:tripID', async (req, res) => {
     try {

@@ -1,9 +1,6 @@
-@import url("https://fonts.googleapis.com/css?family=Ubuntu");
-
 .list {
   position: relative;
   background-color: #f4f4f4;
-  font-family: "Open Sans", sans-serif;
   font-size: 22px;
   color: #555555;
   border: solid;
@@ -13,12 +10,12 @@
   overflow: scroll;
   list-style: none;
   padding: 10px;
+  padding-top: 22px;
 }
 
 .item-name {
   text-align: left;
   margin-left: 40px;
-  font-family: "Ubuntu", sans-serif;
 }
 /* Customize the label (the container) */
 .container {

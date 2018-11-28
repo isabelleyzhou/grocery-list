@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "cors": "^2.8.5",
+    "detect-port-alt": "^1.1.6",
     "express-promise-router": "^3.0.3",
     "pg": "^7.6.1",
     "react": "^16.6.3",

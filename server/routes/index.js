@@ -53,10 +53,9 @@ router.get('/items/:tripID', async (req, res) => {
 /**
  * Adds an item to the grocery list of items for a given trip
  */
-router.post('/items/:tripID', async (req, res) => {
+router.post('/items', async (req, res) => {
     try {
-        const { tripID } = req.params;
-        const { itemName } = req.body;
+        const { itemName, tripID } = req.body;
         const query = await db.query(
             'INSERT INTO items (trip_id, item_name) VALUES ($1, $2) RETURNING id;',
             [tripID, itemName]

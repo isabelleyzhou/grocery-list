@@ -19,6 +19,7 @@
 }
 .inputText {
   position: absolute;
+  text-indent: 10px;
   background-color: #f4f4f4;
   font-size: 20px;
   top: 150px;

@@ -30,6 +30,7 @@ class Dashboard extends Component {
       finished: false,
     };
     this.displayDates = this.displayDates.bind(this);
+    this.createNewDate = this.createNewDate.bind(this);
   }
 
   /** Fetch the trips from the API and set state */
@@ -62,6 +63,29 @@ class Dashboard extends Component {
     }
   }
 
+  createNewDate() {
+    const { dateList } = this.state;
+    const date = "December 1";
+    console.log(date);
+    dateList.push(<Date title={date} />);
+    this.setState({ dateList });
+    fetch('/api/addtrip', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ date })
+    }).then(
+      response => {
+        if (response.ok) {
+          return;
+        }
+        throw new Error('Request failed!');
+      },
+      networkError => console.log(networkError.message)
+    );
+  }
+
   render() {
     const { dateList } = this.state;
     return (
@@ -76,7 +100,9 @@ class Dashboard extends Component {
           />
         </NavLink>
         <div className="boxes-container">
-          <AddDate />
+          <button className="add-button" onClick={this.createNewDate}>
+            <AddDate />
+          </button>
           {this.displayDates(dateList)}
         </div>
       </div>

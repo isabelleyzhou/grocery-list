@@ -18,10 +18,10 @@ router.get('/trips', async (req, res) => {
         const query = await db.query(
             `SELECT
                 id,
-                trip_name,
-                EXTRACT(DAY from trip_date) AS day,
-                EXTRACT(MONTH from trip_date)
-            AS month FROM trips ORDER BY id;`
+                trip_date;`
+            //     EXTRACT(DAY from trip_date) AS day,
+            //     EXTRACT(MONTH from trip_date)
+            // AS month FROM trips ORDER BY id;`
         );
         res.send(query.rows);
     } catch (error) {
@@ -77,19 +77,15 @@ router.post('/items', async (req, res) => {
  */
 router.post('/addtrip', async (req, res) => {
     try {
-        const { tripName } = req.body;
-        const query = await db.query(
-            'INSERT INTO trips (trip_name) VALUES ($1) RETURNING id;',
-            [tripName]
+        const { date } = req.body;
+        db.query(
+            'INSERT INTO trips(trip_date) VALUES ($1);',
+            [date]
         );
-        const tripID = query.rows[0].id;
-        res.send({
-            id: tripID,
-            name: tripName,
-        });
     } catch (error) {
         console.log(error.stack);
     }
+    res.send('Update successful');
 });
 
 /** Don't forget to export */

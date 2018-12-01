@@ -10,8 +10,7 @@ WITH ENCRYPTED PASSWORD 'password';
 CREATE TABLE trips
 (
   id SERIAL PRIMARY KEY,
-  trip_name VARCHAR NOT NULL,
-  trip_date DATE NOT NULL DEFAULT CURRENT_DATE
+  trip_date VARCHAR
 );
 
 CREATE TABLE items
@@ -22,10 +21,10 @@ CREATE TABLE items
 );
 
 INSERT INTO trips
-  (trip_name)
+  (trip_date)
 VALUES
-  ('first trip!'),
-  ('second trip!');
+  ('November 14'),
+  ('November 20');
 
 INSERT INTO items
   (trip_id, item_name)

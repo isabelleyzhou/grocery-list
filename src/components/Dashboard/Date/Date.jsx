@@ -5,14 +5,12 @@ import { NavLink } from "react-router-dom";
 
 class Date extends Component {
   static propTypes = {
-    color: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired
   };
 
   render() {
     const { title } = this.props;
     const date = title.split(" ");
-    console.log(date);
     const month = date[0],
       number = date[1];
     return (
